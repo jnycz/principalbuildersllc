@@ -259,3 +259,63 @@ function principalbuilders_menu_local_tasks(&$variables) {
   return $output;
 
 }
+
+/**
+ * Returns Community Outreach array
+ */
+/*
+function principalbuilders_comm_outreach_data() {
+
+  // Vars
+  $counter = 0;
+  $i = 0;
+
+  // Get view result
+  $name = 'community_outreach';
+  $display_id = 'comm_outreach_b1';
+  $comm_out_data = views_get_view_result($name, $display_id);
+
+  // Load data for each node ref
+
+  // Break into groups of 3
+  foreach($comm_out_data as $key => $cod) {
+
+    // Load images for nid for each node ref
+    $comm_out_nid = $cod->nid;
+    $node = node_load($comm_out_nid);
+
+    $field_gallery = field_get_items('node', $node, 'field_gallery');
+    //$image_fields  = field_view_field('node', $node, 'field_gallery');
+    $image_fields = field_view_value('node', $node, 'field_gallery', $field_gallery);
+
+
+
+
+    if(!empty($image_fields['#item'])) {
+      //$images
+      dpr($image_fields['#item']);
+    }
+
+    // Split into groups of 3
+    if($counter % 3 === 0) {
+      $i++;
+    }
+
+    $counter++;
+
+    // Load node refs by 3
+    $comm_outdata[$i][$key] = $num_items;
+
+  }
+
+  return $comm_outdata;
+  //return $comm_out_images;
+
+
+}*/
+
+
+
+
+
+

@@ -1,35 +1,3 @@
-/* Author: Dan Linn */
-/*
-(function($) {
-  $(window).resize(function(){
-    if(!$(".mobileselect").length) {
-      createMobileMenu();
-    } else if ($(window).width()>=480) {
-      $('#navigation ul').show();
-      $('.mobileselect').hide();
-    } else {
-      $('#navigation ul').hide();
-      $('.mobileselect').show();
-    }
-  });
-  function createMobileMenu(){
-    $('#navigation ul').mobileSelect({
-      autoHide: true, // Hide the ul automatically
-      defaultOption: "Navigation", // The default select option
-      deviceWidth: 480, // The select will be added for screensizes smaller than this
-      appendTo: '', // Used to place the drop-down in some location other than where the primary nav exists
-      className: 'mobileselect', // The class name applied to the select element
-      useWindowWidth: true // Use the width of the window instead of the width of the screen
-    });
-  }
-  Drupal.behaviors.mobileMenu = {
-    attach: function (context) {
-      createMobileMenu();
-    }
-  }
-})(jQuery);
-*/
-
 // Project Items Slideshow
 function slideshow(id) {
   var navID = '<ul class="nav" id="nav-'+id+'">';
@@ -51,6 +19,41 @@ function slideshow(id) {
   });
 }
 
+// Community Outreach Slideshow
+function coSlideshow(id) {
+
+  // Run jcycle
+  /*
+  jQuery(id).cycle({
+    fx:     'shuffle',
+    easing: 'easeOutBack',
+    pause: 0,
+    timeout: 3000,
+    next: id + ' img'
+
+  });*/
+
+  jQuery('.photo-slider').each(function() {
+    var $this = jQuery(this);
+    $this.cycle({
+      fx: 'shuffle',
+      easing: 'easeOutBack',
+      pause: 0,
+      timeout: 3000,
+    });
+  });
+
+}
+
+
+
+// Return random numbers between the range args
+function randomIntFromInterval(min,max)
+{
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+
 // Home page slideshow
 function mycarousel_initCallback(carousel) {
   jQuery('.jcarousel-control a').bind('click', function() {
@@ -58,7 +61,7 @@ function mycarousel_initCallback(carousel) {
     return false;
   });
 
-  jQuery('#slideshow').live('mouseover mouseout', function(event) {       
+  jQuery('#slideshow').live('mouseover mouseout', function(event) {
 
     // Disable default action
     event.preventDefault();
@@ -71,7 +74,7 @@ function mycarousel_initCallback(carousel) {
     // Restart carousel at mouseout
     if (event.type == 'mouseout') {
       carousel.startAuto()
-    }; 
+    };
   });
 
 };
@@ -84,7 +87,7 @@ function runSlideShow() {
     initCallback: mycarousel_initCallback,
     itemVisibleInCallback: {
       onAfterAnimation: function(c, o, i, s) {
-      //console.log(o);
+        //console.log(o);
         --i;
         j = i--;
         jQuery('.jcarousel-control a').removeClass('active').addClass('inactive');
@@ -99,9 +102,34 @@ function runSlideShow() {
 
 // Views Rows fadein
 jQuery(document).ready(function() {
+
+  // Portfolio items fade in to hide loading
   jQuery( ".view-portfolio-items .views-row" ).each(function() {
     jQuery(this).hide().fadeIn(3000);
   });
+
+  // Accordian
+  var items = '.tabbed-content-container .tabbed-content.open .items';
+  var tabbedContent = '.tabbed-content-container .tabbed-content';
+  var tabbedContentHeading = '.tabbed-content-container .tabbed-content h2';
+  var tabbedContentItems = '.tabbed-content-container .tabbed-content .item';
+  jQuery(tabbedContentHeading).click(function() {
+    var clickedHeading = jQuery(this).parent('.tabbed-content');
+    jQuery(items).slideUp(400, "easeInOutQuart");
+    // Second click
+    if(clickedHeading.hasClass('open')) {
+      jQuery(this).parent('.tabbed-content').removeClass('open');
+      jQuery(this).next(items).slideUp(400, "easeInOutQuart");
+    } else {
+      // Open
+      jQuery(tabbedContent).removeClass('open');
+      jQuery(this).parent('.tabbed-content').addClass('open');
+      jQuery(this).next(items).slideDown(400, "easeInOutQuart");
+    }
+  });
+
+  coSlideshow();
+
 });
 
 

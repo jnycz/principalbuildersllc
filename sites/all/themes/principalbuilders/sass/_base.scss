@@ -8,38 +8,26 @@
 // Links
 //
 a {
-  color: $link_color;
+  color: #1a45a8;
   &:link {
   }
   &:visited {
-    color: $visited_link_color;
+    color: #1a45a8;
   }
   &:hover {
-    color: $active_link_color;
+    color: #1a45a8;
   }
   &:focus {
-    color: $active_link_color;
+    color: #1a45a8;
     outline: thin dotted;
   }
   &:hover, &:active {
-    color: $active_link_color;
+    color: #1a45a8;
     text-decoration: underline;
     outline: 0; // Improve readability when focused and hovered in all browsers: h5bp.com/h
   }
 }
 
-#navigation {
-  ul {
-    margin: 0px;
-    float: left;
-    padding: 0px;
-  }
-  li {
-    list-style: none;
-    margin: 5px;
-    float: left;
-  }
-}
 
 #footer {
   p {
@@ -52,16 +40,7 @@ a {
 //
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.3em;
-  color: $header_text_color;
-  @include breakpoint($mobile) {
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-    @include font-size(16);
-    background: #fff;
-    color: #000;
-    word-wrap: break-word;
-    -webkit-text-size-adjust: none;
-  }
+  color: black;
 }
 
 h1 {
@@ -100,6 +79,7 @@ h6 {
 
 p {
   margin: 0 0 1em 0;
+  background-image: url("../img/blank.png");
 }
 
 abbr {
@@ -229,6 +209,7 @@ ol {
   }
 }
 
+/*
 p img {
   @include breakpoint($tablet) {
     float: left;
@@ -249,5 +230,5 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
   }
-}
+}*/
 
