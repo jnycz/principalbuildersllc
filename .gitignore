@@ -7,4 +7,6 @@ sites/*/private
 
 bak*
 oldsite*
-idea*
+.idea*
+.idea/*
+.DS_Store
